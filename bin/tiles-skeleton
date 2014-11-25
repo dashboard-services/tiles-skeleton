@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+var path = require('path'),
+	fs = require('fs'),
+	lib = path.join(path.dirname(fs.realpathSync(__filename)), '..', 'lib'),
+	argv = require('minimist')(process.argv.slice(2)),
+	workingDirectory = process.cwd()
+;
+
+var appName = argv['_'].pop();
+
+if (typeof appName == 'undefined') {
+	console.log(
+		'Usage:\n',
+		process.argv[0],
+		process.argv[1].split('\\').pop(),
+		'application-name'
+	);
+
+	return;
+}
+
+
+
+Skeleton = require(lib);
+Skeleton.createApp(appName, workingDirectory);
